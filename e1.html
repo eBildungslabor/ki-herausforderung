@@ -2,46 +2,63 @@
 <html lang="de">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <meta charset="UTF-8">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
-    <script src="js/common.js"></script>
-    <title>🤖 KI-Tüftellabor</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+    <title>🤖 KI-Herausforderungen</title>
 </head>
 <body>
 
 <header class="container">
-        
-<h1><a href="index.html">🤖 KI-Tüftellabor</a></h1>
-        <p>Erkundungen, Austausch und Reflexion zu Künstlicher Intelligenz</p>
+    <h1><a href="index.html">🤖 KI-Herausforderungen</a></h1>
+    <p>Im Kontext von KI klüger werden!</p>
     <hr>
 </header>
-        <main class="container">
-            
-        <h2>Basics #1: Mit einem KI-Sprachmodell ein Brainstorming gestalten</h2>
 
-        <p>Normalerweise würdest du dir beim Brainstorming wahrscheinlich eine Liste mit Ideen von einem KI-Sprachmodell generieren lassen. Wenn du allerdings selbst aktiv beteiligt sein willst, wäre ein PingPong der bessere Weg. Hier ist ein möglicher Prompt, den ihr mit einem für euch relevanten Thema ergänzen und ausprobieren könnt:</p>
-<hr>
-        <div id="resultContainer">
-            <p id="resultText">
-             Lass uns gemeinsam ein Brainstorming gestalten. Das sind die Regeln:<br>
-Wir suchen Ideen zu dieser Herausforderung: (Herausforderung beschreiben).
-<br>
-                Wir sind immer abwechselnd an der Reihe. Du schreibst eine Idee - und forderst dann mich zu einer Idee auf. Dann bist du wieder dran. Usw.
-                <br>Die Ideen sollen möglichst kreativ sein und dürfen sich nicht wiederholen.
-<br>Wenn ich 'Stopp' schreibe, ist das Spiel zu Ende und du gibst mir die Idee aus, die du am besten fandest! 
-<br>Lass uns starten!
-            </p>
-        </div>
+<main class="container">
+    <h2>#1: Mit einem KI-Sprachmodell ein Brainstorming gestalten</h2>
 
-        <button id="copyButton">Text kopieren</button>
-<hr>
-        <p>Frei und ohne Registrierung zugängliche KI-Sprachmodelle findest du z.B. über <a href="https://duckduckgo.com/?q=DuckDuckGo+AI+Chat&ia=chat&duckai=1&atb=v414-1">diesen Link bei der Suchmaschine DuckDuckGo</a>.</p>
-    <p> <p><a href="index.html"><button>⬅ Zurück zur Übersicht</button></a></p>
-    </main>
+    <p>Normalerweise würdest du dir beim Brainstorming wahrscheinlich eine Liste mit Ideen von einem KI-Sprachmodell generieren lassen. Wenn du allerdings selbst aktiv beteiligt sein willst, wäre ein PingPong der bessere Weg. Hier kannst du diesen Ansatz praktisch ausprobieren. Überlege dir eine Herausforderung, zu der du Ideen suchst - und lasse dir dann einen Prompt generieren.</p>
+    
+    <label for="challenge">Was ist deine Herausforderung?</label>
+    <input type="text" id="challenge" placeholder="z. B. neue Prüfungsformate im Kontext von KI" />
 
-   
+    <button id="generateButton">Prompt generieren und kopieren</button>
 
+    <article id="resultContainer" style="display:none; margin-top: 1rem;">
+        <h3>Dein Prompt:</h3>
+        <p id="resultText"></p>
+    </article>
+
+    <hr>
+    <p>Frei und ohne Registrierung zugängliche KI-Sprachmodelle findest du z.B. über <a href="https://duckduckgo.com/?q=DuckDuckGo+AI+Chat&ia=chat&duckai=1&atb=v414-1">diesen Link bei der Suchmaschine DuckDuckGo</a>. Alternativ kannst du die fobizz-Tools nutzen.</p>
+    <p><a href="index.html"><button>⬅ Zurück zur Übersicht</button></a></p>
+</main>
+
+<script>
+document.getElementById('generateButton').addEventListener('click', function () {
+    const challenge = document.getElementById('challenge').value.trim();
+    if (!challenge) {
+        alert('Bitte gib eine Herausforderung ein.');
+        return;
+    }
+
+    const promptText = `Lass uns gemeinsam ein Brainstorming gestalten. Das sind die Regeln:\n
+Wir suchen Ideen zu dieser Herausforderung: ${challenge}.\n
+Wir sind immer abwechselnd an der Reihe. Du schreibst eine Idee – und forderst dann mich zu einer Idee auf. Dann bist du wieder dran. Usw.\n
+Die Ideen sollen möglichst kreativ sein und dürfen sich nicht wiederholen.\n
+Wenn ich 'Stopp' schreibe, ist das Spiel zu Ende und du gibst mir die Idee aus, die du am besten fandest!\n
+Lass uns starten!`;
+
+    document.getElementById('resultText').textContent = promptText;
+    document.getElementById('resultContainer').style.display = 'block';
+
+    // Kopieren in die Zwischenablage
+    navigator.clipboard.writeText(promptText).then(() => {
+        alert('Prompt wurde in die Zwischenablage kopiert!');
+    });
+});
+</script>
 
 </body>
-
 </html>
+
