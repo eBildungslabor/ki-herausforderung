@@ -1,49 +1,59 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <meta charset="UTF-8">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
-    <script src="js/common.js"></script>
-    <title>🤖 KI-Tüftellabor</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+  <title>🤖 KI-Herausforderungen</title>
 </head>
 <body>
 
 <header class="container">
-        
-<h1><a href="index.html">🤖 KI-Tüftellabor</a></h1>
-        <p>Erkundungen, Austausch und Reflexion zu Künstlicher Intelligenz</p>
-    <hr>
+  <h1><a href="index.html">🤖 KI-Herausforderungen</a></h1>
+  <p>Im Kontext von KI klüger werden!</p>
+  <hr>
 </header>
-        <main class="container">
-            
-        <h2>Basics 5: Mit einem KI-Sprachmodell Perspektivwechsel üben</h2>
 
-        <p>Intuitiv würdest du dir wahrscheinlich von einem KI-Sprachmodell einen Inhalt zur Weiternutzung generieren lassen. Alternativ kannst du mit einem KI-Sprachmodell auch Spiele spielen und dich so in einen offenen Prozess des Lernens begeben. Hier ist zum Beispiel ein anpassbarer Prompt für ein Spiel, mit dem du dich in einem Perspektivwechsel üben kannst. Lies ihn dir gut durch, damit du deine Rolle korrekt spielst - sonst funktioniert der Prompt nicht. Insbesondere musst du mit einer ersten fiktiven Rolle und einem Zitat starten.</p>
-<hr>
-        <div id="resultContainer">
-            <p id="resultText">
-Ich möchte mit dir ein Spiel spielen, das folgendermaßen funktioniert.
-<br>
-1. Wir sind immer abwechselnd an der Reihe. Ich starte, dann du, dann schreibe ich wieder etwas, dann du ... Das Spiel endet, wenn ich schreibe: Das Spiel ist zu Ende!
-<br>2. Wir nehmen in unseren Beiträgen immer eine zufällig ausgewählte Rolle aus der Erwachsenenbildung ein. Das kann eine Dozentin, ein Teilnehmer, eine Leiterin eines Bildungswerks .. sein. Sie können unterschiedliche Ausprägungen haben (z.B. eine überforderte Dozentin, eine Teilnehmerin, die Digitalisierung skeptisch gegenüber steht ...) In jedem Beitrag entscheiden wir uns für eine andere Rolle.
-<br>3. Wir bauen unseren Beitrag folgendermaßen auf: Ich bin [fiktiver Name und Infos zu meinen Charakteristika]. Ich habe von dir diese Aussage gehört: [Wiederholung der Aussage von dem Beitrag davor]. Ich denke dazu: [Ganz kurze Erläuterung der Perspektive]. Das bringt mich stattdessen zu dieser Aussage: [neue Aussage]
-<br>4. Die Beiträge sollen in sich logisch formuliert sein und immer eine veränderte Perspektive zum vorherigen Beitrag aufmachen. Der erste Beitrag wird von mir stammen. Da es der erste Beitrag ist, kann ich da noch nicht auf einen früheren Beitrag Bezug nehmen. 
-<br>
-Wenn du das Spiel verstanden hast, dann fordere mich zu einem ersten Zitat einer fiktiven Persona heraus.
-              
-            </p>
-        </div>
+<main class="container">
+  <h2>Basics 5: Mit einem KI-Sprachmodell Perspektivwechsel üben</h2>
 
-        <button id="copyButton">Text kopieren</button>
-<hr>
-        <p>Frei und ohne Registrierung zugängliche KI-Sprachmodelle findest du z.B. über <a href="https://duckduckgo.com/?q=DuckDuckGo+AI+Chat&ia=chat&duckai=1&atb=v414-1">diesen Link bei der Suchmaschine DuckDuckGo</a>.</p>
-    <p> <p><a href="index.html"><button>⬅ Zurück zur Übersicht</button></a></p>
-    </main>
+  <p>Statt dir Inhalte von einem KI-Sprachmodell einfach generieren zu lassen, kannst du mit einem Sprachmodell auch **ein Rollenspiel machen**, das dich in einen offenen Reflexionsprozess bringt. Hier ist ein Prompt für ein Spiel, bei dem du dich in immer neue Rollen aus der Erwachsenenbildung hineinversetzt. Lies dir den Ablauf genau durch – und starte das Spiel, indem du als Erste*r ein fiktives Zitat aus einer erfundenen Rolle formulierst.</p>
 
-   
+  <hr>
 
+  <div id="resultContainer">
+    <p id="resultText">
+Ich möchte mit dir ein Spiel spielen, das folgendermaßen funktioniert:
+
+1. Wir sind immer abwechselnd an der Reihe. Ich starte, dann du, dann schreibe ich wieder etwas, dann du ... Das Spiel endet, wenn ich schreibe: <strong>Das Spiel ist zu Ende!</strong><br><br>
+
+2. Wir nehmen in unseren Beiträgen immer eine zufällig ausgewählte Rolle aus der Erwachsenenbildung ein. Das kann z.&nbsp;B. eine Dozentin, ein Teilnehmer oder eine Leiterin eines Bildungswerks sein. Die Rollen können unterschiedliche Haltungen haben (z.&nbsp;B. eine überforderte Dozentin oder ein skeptischer Teilnehmer).<br><br>
+
+3. Jeder Beitrag folgt dieser Struktur:<br>
+<strong>„Ich bin [fiktiver Name + kurze Beschreibung]. Ich habe von dir diese Aussage gehört: [Wiederholung der vorherigen Aussage]. Ich denke dazu: [kurze Einschätzung]. Das bringt mich stattdessen zu dieser Aussage: [eigene neue Aussage].“</strong><br><br>
+
+4. Jeder neue Beitrag soll eine **neue Perspektive** aufmachen – logisch, kurz und präzise. Der erste Beitrag kommt von mir. Er bezieht sich auf kein vorheriges Zitat, sondern enthält die erste fiktive Aussage einer erfundenen Person.<br><br>
+
+Wenn du das Spiel verstanden hast, dann fordere mich jetzt auf, ein erstes fiktives Zitat zu nennen.
+    </p>
+  </div>
+
+  <button id="copyButton">Prompt kopieren</button>
+
+  <hr>
+
+  <p>Frei und ohne Registrierung zugängliche KI-Sprachmodelle findest du z.&nbsp;B. über <a href="https://duckduckgo.com/?q=DuckDuckGo+AI+Chat&ia=chat&duckai=1&atb=v414-1">diesen Link bei der Suchmaschine DuckDuckGo</a>.</p>
+  <p><a href="index.html"><button>⬅ Zurück zur Übersicht</button></a></p>
+</main>
+
+<script>
+  document.getElementById('copyButton').addEventListener('click', function () {
+    const promptText = document.getElementById('resultText').innerText;
+    navigator.clipboard.writeText(promptText)
+      .then(() => alert('Prompt wurde kopiert!'))
+      .catch(() => alert('Kopieren fehlgeschlagen.'));
+  });
+</script>
 
 </body>
-
 </html>
