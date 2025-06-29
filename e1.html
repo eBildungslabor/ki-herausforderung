@@ -17,16 +17,17 @@
 <main class="container">
     <h2>#1: Mit einem KI-Sprachmodell ein Brainstorming gestalten</h2>
 
-    <p>Normalerweise würdest du dir beim Brainstorming wahrscheinlich eine Liste mit Ideen von einem KI-Sprachmodell generieren lassen. Wenn du allerdings selbst aktiv beteiligt sein willst, wäre ein PingPong der bessere Weg. Hier kannst du diesen Ansatz praktisch ausprobieren. Überlege dir eine Herausforderung, zu der du Ideen suchst - und lasse dir dann einen Prompt generieren.</p>
+    <p>Normalerweise würdest du dir beim Brainstorming wahrscheinlich eine Liste mit Ideen von einem KI-Sprachmodell generieren lassen. Wenn du allerdings selbst aktiv beteiligt sein willst, wäre ein PingPong der bessere Weg. Hier kannst du diesen Ansatz praktisch ausprobieren. Überlege dir eine Herausforderung, zu der du Ideen suchst – und lasse dir dann einen Prompt generieren.</p>
     
     <label for="challenge">Was ist deine Herausforderung?</label>
     <input type="text" id="challenge" placeholder="z. B. neue Prüfungsformate im Kontext von KI" />
 
-    <button id="generateButton">Prompt generieren und kopieren</button>
+    <button id="generateButton">Prompt generieren</button>
 
     <article id="resultContainer" style="display:none; margin-top: 1rem;">
         <h3>Dein Prompt:</h3>
         <p id="resultText"></p>
+        <button id="copyButton">Prompt kopieren</button>
     </article>
 
     <hr>
@@ -51,8 +52,10 @@ Lass uns starten!`;
 
     document.getElementById('resultText').textContent = promptText;
     document.getElementById('resultContainer').style.display = 'block';
+});
 
-    // Kopieren in die Zwischenablage
+document.getElementById('copyButton').addEventListener('click', function () {
+    const promptText = document.getElementById('resultText').textContent;
     navigator.clipboard.writeText(promptText).then(() => {
         alert('Prompt wurde in die Zwischenablage kopiert!');
     });
@@ -61,4 +64,3 @@ Lass uns starten!`;
 
 </body>
 </html>
-
