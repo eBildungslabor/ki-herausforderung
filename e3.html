@@ -4,50 +4,56 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta charset="UTF-8">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
-  <script src="js/common.js"></script>
-  <title>🤖 KI-Tüftellabor</title>
+  <title>🤖 KI-Herausforderungen</title>
 </head>
 <body>
 
 <header class="container">
-  <h1><a href="index.html">🤖 KI-Tüftellabor</a></h1>
-  <p>Erkundungen, Austausch und Reflexion zu Künstlicher Intelligenz</p>
+  <h1><a href="index.html">🤖 KI-Herausforderungen</a></h1>
+  <p>Im Kontext von KI klüger werden!</p>
   <hr>
 </header>
 
 <main class="container">
-  <h2>Basics #3: Mit einem KI-Sprachmodell Modellierung üben</h2>
+  <h2>#3: Mit einem KI-Sprachmodell Modellierung üben</h2>
+  <p>Modellierung praktizieren meint das bewusste Entwerfen, Erproben und Weiterentwickeln eigener Denk- und Handlungsstrategien ausgehend von bereits bestehenden Kompetenzen und Wissen. Lernende externalisieren mentale Modelle, machen so ihre Überlegungen sichtbar und arbeiten daran weiter. Wir probieren Externalisierung hier in Form einer These aus. </p>
 
-  <p>Modellierung praktizieren meint das bewusste Entwerfen, Erproben und Weiterentwickeln eigener Denk- und Handlungsstrategien ausgehend von bereits bestehenden Kompetenzen und Wissen. Lernende externalisieren mentale Modelle, machen so ihre Überlegungen sichtbar und arbeiten daran weiter.</p>
+  <p>Formuliere eine eigene These zur beruflichen Bildung im Kontext von KI:</p>
 
-  <p>Um Modellierung in Interaktion mit KI-Sprachmodellen praktisch auszuprobieren wirst gleich dazu eingeladen, deine eigene These zu guter gesellschaftspolitischer Jugendbildung im Kontext von KI zu formulieren (= Externalisierung deines mentalen Modells) und mit einem KI-Sprachmodell weiterzuentwickeln (= Modellierung). Der folgende Prompt hilft dir dabei.</p>
+  <label for="these">Deine These zur beruflichen Bildung mit KI:</label>
+  <input type="text" id="these" placeholder="z. B. KI sollte integraler Bestandteil aller Ausbildungsberufe werden" />
 
-  <button onclick="copyPrompt()">Prompt kopieren</button>
+  <button id="generateButton">Prompt generieren</button>
 
-    <p>
-  <div id="prompt-text" class="hidden-prompt">
-Bitte begleite mich in einem Reflexionsprozess. Ich möchte eine eigene These zu guter gesellschaftspolitischer Jugendbildung im Kontext von KI formulieren und weiterentwickeln. Beginne, indem du mich bittest, meine These aufzuschreiben. Wenn ich die These nenne, gehe dann wie folgt vor:
+  <article id="resultContainer" style="display:none; margin-top: 1rem;">
+    <h3>Dein individueller Prompt:</h3>
+    <p id="resultText"></p>
+    <button id="copyButton">Prompt kopieren</button>
+  </article>
 
-1. Nenne drei Argumente, die meine These stützen könnten. Frage mich dann, ob ich weitere Argumente möchte oder ob du weitermachen kannst.
-2. Nenne drei Gegenargumente oder Einschränkungen. Frage mich dann, ob ich weitere Gegenargumente möchte oder ob du weitermachen kannst.
-3. Gib mir zwei Fallbeispiele: eines, das die These bestätigt, und eines, das sie widerlegt. Frage mich dann, ob ich weitere Fallbeispiele wünsche oder ob du zum Abschluss kommen kannst.
-4. Bitte mich abschließend, die These auf Basis der Argumente und Beispiele anzupassen. Wenn ich dir eine überarbeitete Version nenne, mache einen Vorschlag für eine alternative Formulierung.
-
-Nutze bitte eine klare, strukturierte Sprache und einen freundlichen, unterstützenden Ton.
-  </div>
-</p>
   <p><a href="index.html"><button>⬅ Zurück zur Übersicht</button></a></p>
 </main>
 
-
-
 <script>
-  function copyPrompt() {
-    const prompt = document.getElementById('prompt-text').textContent;
-    navigator.clipboard.writeText(prompt)
-      .then(() => alert('Prompt wurde kopiert!'))
+  document.getElementById('generateButton').addEventListener('click', function () {
+    const these = document.getElementById('these').value.trim();
+    if (!these) {
+      alert('Bitte gib eine These ein.');
+      return;
+    }
+
+    const prompt = `Bitte begleite mich in einem Reflexionsprozess. Ich habe eine These zur beruflichen Bildung im Kontext von KI formuliert. Meine These lautet:\n\n"${these}"\n\nGehe bitte wie folgt vor:\n\n1. Nenne drei Argumente, die meine These stützen könnten. Frage mich dann, ob ich weitere Argumente möchte oder ob du weitermachen kannst.\n2. Nenne drei Gegenargumente oder Einschränkungen. Frage mich dann, ob ich weitere Gegenargumente möchte oder ob du weitermachen kannst.\n3. Gib mir zwei Fallbeispiele: eines, das die These bestätigt, und eines, das sie herausfordert oder widerlegt. Frage mich dann, ob ich weitere Fallbeispiele wünsche oder ob du zum Abschluss kommen kannst.\n4. Bitte mich abschließend, die These auf Basis der Argumente und Beispiele zu überarbeiten. Wenn ich dir eine neue Version nenne, mache einen Vorschlag für eine alternative Formulierung.\n\nNutze bitte eine klare, strukturierte Sprache und einen freundlichen, unterstützenden Ton.`;
+
+    document.getElementById('resultText').textContent = prompt;
+    document.getElementById('resultContainer').style.display = 'block';
+  });
+
+  document.getElementById('copyButton').addEventListener('click', function () {
+    const text = document.getElementById('resultText').textContent;
+    navigator.clipboard.writeText(text)
+      .then(() => alert('Prompt wurde in die Zwischenablage kopiert!'))
       .catch(() => alert('Kopieren fehlgeschlagen.'));
-  }
+  });
 </script>
 
 </body>
